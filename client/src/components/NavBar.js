@@ -1,10 +1,11 @@
 import { Navbar, NavDropdown, Nav, Container, Row, Col } from "react-bootstrap";
+import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 
 export const NavBar = () => {
   return (
-    <Navbar>
+    <Navbar collapseOnSelect className="shadow-sm" expand="lg" fixed="top">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="#home" className="fs-5">
           {" "}
           <img
             alt=""
@@ -13,34 +14,35 @@ export const NavBar = () => {
             height="35"
             className="d-inline-block align-top"
           />{" "}
-          <text style={{ marginLeft: 10, fontSize: 25, color: "black" }}>
             FlatRent
-          </text>
         </Navbar.Brand>
 
-        <Navbar.Collapse
-          className="justify-content-center"
-          style={{ marginLeft: 250 }}
-        >
-          <Navbar.Text>
-            <a href="#login">Готелі </a>
-          </Navbar.Text>
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav
+            className="justify-content-center mx-auto"
+            variant="pills"
+            defaultActiveKey="#"
+          >
+            <Nav.Item className="px-3 fs-5">
+              <Nav.Link herf="#login">Готелі</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="px-3 fs-5">
+              <Nav.Link herf="#login">Хостели</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="px-3 fs-5">
+              <Nav.Link herf="#login">Хатинки</Nav.Link>
+            </Nav.Item>
+          </Nav>
 
-          <Navbar.Text style={{ marginInline: 25 }}>
-            <a href="#login">Хостели</a>
-          </Navbar.Text>
+          <Nav className="d-flex justify-content-end">
+            <Navbar.Text>
+              Signed in as: <a href="#login">Stepan Bandera</a>
+            </Navbar.Text>
+          </Nav>
+          </Navbar.Collapse>
 
-          <Navbar.Text>
-            <a href="#login">Хатинки</a>
-          </Navbar.Text>
-        </Navbar.Collapse>
-
-        <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            Signed in as: <a href="#login">Stepan Bandera</a>
-          </Navbar.Text>
-        </Navbar.Collapse>
-      </Container>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav"/>      
+        </Container>
     </Navbar>
   );
 };
