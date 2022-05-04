@@ -6,7 +6,7 @@ export const NavBar = () => {
   const navigate = useNavigate();
 
   return (
-    <Navbar collapseOnSelect className="shadow-sm" expand="lg" fixed="top">
+    <Navbar collapseOnSelect className="shadow-sm" expand="lg">
       <Container>
         <Navbar.Brand
           href="#"
@@ -41,7 +41,13 @@ export const NavBar = () => {
             </Nav.Item>
           </Nav>
 
-          <Nav className="d-flex justify-content-end">
+          <Nav
+            className="d-flex justify-content-end"
+            style={{
+              border: "3px solid rgba(0, 0, 0, 1)",
+              borderRadius: "50px",
+            }}
+          >
             <Navbar.Text>
               Signed in as: <a href="#login">Stepan Bandera</a>
             </Navbar.Text>
