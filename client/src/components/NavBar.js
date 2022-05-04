@@ -1,11 +1,18 @@
 import { Navbar, NavDropdown, Nav, Container, Row, Col } from "react-bootstrap";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
+import { useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
+  const navigate = useNavigate();
+
   return (
     <Navbar collapseOnSelect className="shadow-sm" expand="lg" fixed="top">
       <Container>
-        <Navbar.Brand href="#home" className="fs-5">
+        <Navbar.Brand
+          href="#"
+          onClick={() => navigate("/categories")}
+          className="fs-5"
+        >
           {" "}
           <img
             alt=""
@@ -14,7 +21,7 @@ export const NavBar = () => {
             height="35"
             className="d-inline-block align-top"
           />{" "}
-            FlatRent
+          FlatRent
         </Navbar.Brand>
 
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -24,13 +31,13 @@ export const NavBar = () => {
             defaultActiveKey="#"
           >
             <Nav.Item className="px-3 fs-5">
-              <Nav.Link herf="#login">Готелі</Nav.Link>
+              <Nav.Link onClick={() => navigate("/hotels")}>Готелі</Nav.Link>
             </Nav.Item>
             <Nav.Item className="px-3 fs-5">
-              <Nav.Link herf="#login">Хостели</Nav.Link>
+              <Nav.Link onClick={() => navigate("/hostels")}>Хостели</Nav.Link>
             </Nav.Item>
             <Nav.Item className="px-3 fs-5">
-              <Nav.Link herf="#login">Хатинки</Nav.Link>
+              <Nav.Link onClick={() => navigate("/houses")}>Хатинки</Nav.Link>
             </Nav.Item>
           </Nav>
 
@@ -39,10 +46,10 @@ export const NavBar = () => {
               Signed in as: <a href="#login">Stepan Bandera</a>
             </Navbar.Text>
           </Nav>
-          </Navbar.Collapse>
+        </Navbar.Collapse>
 
-          <Navbar.Toggle aria-controls="responsive-navbar-nav"/>      
-        </Container>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      </Container>
     </Navbar>
   );
 };
