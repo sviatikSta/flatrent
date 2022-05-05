@@ -1,11 +1,20 @@
 export default {
-  circle: {
+  searchCircle: {
     marginTop: "75px",
     display: "flex",
     width: "700px",
     height: "75px",
     borderRadius: "50px",
     border: "3px solid rgba(0, 0, 0, 0.5)",
+  },
+  bigAdd: {
+    marginTop: "100px",
+    width: "950px",
+    height: "500px",
+    borderRadius: "25px",
+    border: "3px solid rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    flexDirection: "row",
   },
   vericalLine: {
     with: "1px",
