@@ -1,13 +1,13 @@
 export default {
-  searchCircle: {
+  searchLine: {
     marginTop: "75px",
     display: "flex",
-    width: "700px",
+    width: "850px",
     height: "75px",
     borderRadius: "50px",
     border: "3px solid rgba(0, 0, 0, 0.5)",
   },
-  bigAdd: {
+  bigAd: {
     marginTop: "100px",
     width: "950px",
     height: "500px",
@@ -24,10 +24,24 @@ export default {
     marginBottom: "auto",
   },
   text: {
-    marginInline: "25px",
-    marginTop: "auto",
-    marginBottom: "auto",
     color: "rgba(0, 0, 0, 0.75)",
-    fontSize: "17px",
+    fontSize: "20px",
+    bold: "true",
+  },
+  bigIcon: {
+    fontSize: "44px",
+    color: "white",
+  },
+  smallIcon: {
+    fontSize: "24px",
+    borderRadius: "50%",
+    paddingLeft: "2px",
+    marginLeft: "2px",
+  },
+  searchParam: {
+    cursor: "pointer",
+    justifySelf: "center",
+    margin: "auto",
+    display: "table",
   },
 };
