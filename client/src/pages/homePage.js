@@ -1,35 +1,35 @@
 import styles from "../styles/search";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import SearchIcon from "@material-ui/icons/SearchOutlined";
-import PlaceIcon from "@material-ui/icons/PlaceOutlined";
-import CalenarIcon from "@material-ui/icons/CalendarTodayOutlined";
-import PeoplesIcon from "@material-ui/icons/PeopleOutlineSharp";
+import SearchIcon from "@mui/icons-material/SearchOutlined";
+import PlaceIcon from "@mui/icons-material/PlaceOutlined";
+import CalenarIcon from "@mui/icons-material/CalendarMonthOutlined";
+import PeoplesIcon from "@mui/icons-material/PeopleOutlineOutlined";
 
 export const HomePage = () => {
   return (
     <Container>
       <Container className="mx auto" style={styles.searchLine}>
-        <div style={styles.searchParam}>
+        <div style={styles.searchParamDiv}>
           <a style={styles.text}>Куди ?</a>
           <PlaceIcon style={styles.smallIcon} />
         </div>
 
         <div style={styles.vericalLine} />
 
-        <div style={styles.searchParam}>
+        <div style={styles.searchParamDiv}>
           <a style={styles.text}>Дата відправлення ?</a>
           <CalenarIcon style={styles.smallIcon} />
         </div>
 
         <div style={styles.vericalLine} />
 
-        <div style={styles.searchParam}>
+        <div style={styles.searchParamDiv}>
           <a style={styles.text}>Дата прибуття ?</a>
           <CalenarIcon style={styles.smallIcon} />
         </div>
         <div style={styles.vericalLine} />
 
-        <div style={styles.searchParam}>
+        <div style={styles.searchParamDiv}>
           <a style={styles.text}>Скільки ?</a>
           <PeoplesIcon style={styles.smallIcon} />
         </div>
@@ -37,7 +37,7 @@ export const HomePage = () => {
         <Button
           variant="success"
           className="rounded-circle"
-          style={{ marginTop: "4px", marginBottom: "4px" }}
+          style={{ marginTop: "auto", marginBottom: "auto", padding: 0 }}
         >
           <SearchIcon style={styles.bigIcon} />
         </Button>
@@ -59,17 +59,7 @@ export const HomePage = () => {
           >
             Довіртесь уже спланованим маршрутам
           </span>
-          <Button
-            variant="success"
-            style={{
-              height: "50px",
-              width: "250px",
-              borderRadius: "25px",
-              marginTop: "12px",
-              marginInline: "auto",
-              display: "table",
-            }}
-          >
+          <Button variant="success" style={styles.buttonInsideAd}>
             Переглянути
           </Button>
         </div>

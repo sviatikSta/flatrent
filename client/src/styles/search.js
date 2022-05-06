@@ -29,8 +29,9 @@ export default {
     bold: "true",
   },
   bigIcon: {
-    fontSize: "44px",
+    fontSize: "50px",
     color: "white",
+    padding: "5px",
   },
   smallIcon: {
     fontSize: "24px",
@@ -38,10 +39,18 @@ export default {
     paddingLeft: "2px",
     marginLeft: "2px",
   },
-  searchParam: {
+  searchParamDiv: {
     cursor: "pointer",
     justifySelf: "center",
     margin: "auto",
+    display: "table",
+  },
+  buttonInsideAd: {
+    height: "50px",
+    width: "250px",
+    borderRadius: "25px",
+    marginTop: "12px",
+    marginInline: "auto",
     display: "table",
   },
 };
