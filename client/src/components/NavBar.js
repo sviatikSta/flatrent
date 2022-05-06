@@ -1,6 +1,16 @@
-import { Navbar, NavDropdown, Nav, Container, Row, Col } from "react-bootstrap";
+import {
+  Navbar,
+  NavDropdown,
+  Nav,
+  Container,
+  Row,
+  Col,
+  Button,
+} from "react-bootstrap";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import { useNavigate } from "react-router-dom";
+import DensityMediumIcon from "@mui/icons-material/DensityMedium";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export const NavBar = () => {
   const navigate = useNavigate();
@@ -41,17 +51,32 @@ export const NavBar = () => {
             </Nav.Item>
           </Nav>
 
-          <Nav
+          <Button
             className="d-flex justify-content-end"
+            variant="light"
             style={{
-              border: "3px solid rgba(0, 0, 0, 1)",
+              border: "2px solid rgba(0, 0, 0, 0.5)",
               borderRadius: "50px",
+              paddingTop: "2px",
+              paddingBottom: "2px",
             }}
           >
-            <Navbar.Text>
-              Signed in as: <a href="#login">Stepan Bandera</a>
-            </Navbar.Text>
-          </Nav>
+            <DensityMediumIcon
+              style={{
+                marginTop: "auto",
+                marginBottom: "auto",
+                marginInline: "10px",
+                fontSize: "30px",
+              }}
+            />
+            <AccountCircleIcon
+              style={{
+                fontSize: "40px",
+                marginRight: "1px",
+                color: "#198754",
+              }}
+            />
+          </Button>
         </Navbar.Collapse>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
