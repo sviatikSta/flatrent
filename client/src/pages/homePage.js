@@ -64,6 +64,53 @@ export const HomePage = () => {
           </Button>
         </div>
       </Container>
+      <Container
+        className="mx auto"
+        style={{ width: "950px", marginTop: "100px", fontSize: "28px" }}
+      >
+        Найпопулярнші приклади готелів, хостелів чи хатинок
+      </Container>
+      <Container style={styles.smallAdBox}>
+        <Container style={styles.smallAd}>
+          <div
+            style={{
+              marginTop: "auto",
+              marginBottom: "25px",
+              marginInline: "auto",
+            }}
+          >
+            <Button variant="success" style={styles.buttonInsideAd}>
+              Переглянути
+            </Button>
+          </div>
+        </Container>
+        <Container style={{ ...styles.smallAd, ...{ marginInline: "50px" } }}>
+          <div
+            style={{
+              marginTop: "auto",
+              marginBottom: "25px",
+              marginInline: "auto",
+            }}
+          >
+            <Button variant="success" style={styles.buttonInsideAd}>
+              Переглянути
+            </Button>
+          </div>
+        </Container>
+        <Container style={styles.smallAd}>
+          <div
+            style={{
+              marginTop: "auto",
+              marginBottom: "25px",
+              marginInline: "auto",
+            }}
+          >
+            <Button variant="success" style={styles.buttonInsideAd}>
+              Переглянути
+            </Button>
+          </div>
+        </Container>
+      </Container>
     </Container>
   );
 };

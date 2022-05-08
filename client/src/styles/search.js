@@ -7,14 +7,11 @@ export default {
     borderRadius: "50px",
     border: "3px solid rgba(0, 0, 0, 0.5)",
   },
-  bigAd: {
-    marginTop: "100px",
-    width: "950px",
-    height: "500px",
-    borderRadius: "25px",
-    border: "3px solid rgba(0, 0, 0, 0.5)",
-    display: "flex",
-    flexDirection: "row",
+  searchParamDiv: {
+    cursor: "pointer",
+    justifySelf: "center",
+    margin: "auto",
+    display: "table",
   },
   vericalLine: {
     with: "1px",
@@ -39,11 +36,14 @@ export default {
     paddingLeft: "2px",
     marginLeft: "2px",
   },
-  searchParamDiv: {
-    cursor: "pointer",
-    justifySelf: "center",
-    margin: "auto",
-    display: "table",
+  bigAd: {
+    marginTop: "100px",
+    width: "950px",
+    height: "500px",
+    borderRadius: "25px",
+    border: "3px solid rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    flexDirection: "row",
   },
   buttonInsideAd: {
     height: "50px",
@@ -52,5 +52,17 @@ export default {
     marginTop: "12px",
     marginInline: "auto",
     display: "table",
+  },
+  smallAd: {
+    width: "300px",
+    height: "400px",
+    borderRadius: "25px",
+    border: "3px solid rgba(0, 0, 0, 0.5)",
+    display: "flex",
+  },
+  smallAdBox: {
+    marginTop: "25px",
+    width: "950px",
+    display: "flex",
   },
 };

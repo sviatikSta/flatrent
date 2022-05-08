@@ -31,7 +31,7 @@ export const NavBar = () => {
             height="35"
             className="d-inline-block align-top"
           />{" "}
-          FlatRent
+          <a style={{ fontSize: 28 }}>FlatRent</a>
         </Navbar.Brand>
 
         <Navbar.Collapse id="responsive-navbar-nav">
