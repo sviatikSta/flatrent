@@ -26,6 +26,7 @@ export default {
     width: "100%",
     borderRadius: "25PX",
     // border: "1px solid rgba(0, 0, 0, 0.09)",
+    height: "65px",
     padding: "0px",
   },
   bigIcon: {

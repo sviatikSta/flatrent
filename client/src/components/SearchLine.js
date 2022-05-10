@@ -80,14 +80,14 @@ export const SearchLine = () => {
               lg="1"
               style={{
                 textAlign: "center",
+                marginTop: "auto",
+                marginBottom: "auto",
               }}
             >
               <Button
                 variant="success"
                 className="rounded-circle"
                 style={{
-                  marginTop: "auto",
-                  marginBottom: "auto",
                   padding: 0,
                 }}
               >
@@ -96,106 +96,6 @@ export const SearchLine = () => {
             </Col>
           </Row>
         </Col>
-        {/* <Col
-          lg="2"
-          style={{
-            textAlign: "center",
-            //borderBottomLeftRadius: "25px",
-            // borderTopLeftRadius: "25px",
-            //border: "1px solid rgba(0, 0, 0, 1)",
-          }}
-        >
-          <a style={styles.text}>Куди ?</a>
-        </Col>
-        <Col
-          lg="3"
-          style={{
-            //border: "1px solid rgba(0, 0, 0, 0.5)",
-            textAlign: "center",
-          }}
-        >
-          <a style={styles.text}>Дата відправлення ?</a>
-        </Col>
-        <Col
-          lg="2"
-          style={{
-            // border: "1px solid rgba(0, 0, 0, 0.5)",
-            textAlign: "center",
-          }}
-        >
-          <a style={styles.text}>Дата прибуття ?</a>
-        </Col>
-        <Col
-          lg="2"
-          style={{
-            // border: "1px solid rgba(0, 0, 0, 0.5)",
-            textAlign: "center",
-          }}
-        >
-          <a style={styles.text}>Скільки ?</a>
-        </Col>{" "}
-        <Col
-          lg="1"
-          style={{
-            // border: "1px solid rgba(0, 0, 0, 1)",
-            textAlign: "center",
-            // borderBottomRightRadius: "25px",
-            // borderTopRightRadius: "25px",
-          }}
-        >
-          <Button
-            variant="success"
-            className="rounded-circle"
-            style={{
-              marginTop: "auto",
-              marginBottom: "auto",
-              padding: 0,
-            }}
-          >
-            <SearchIcon style={styles.bigIcon} />
-          </Button>
-        </Col> */}
-
-        {/* <Col
-          style={{
-            ...styles.searchParamDiv,
-            ...{ alignItems: "center" },
-          }}
-        >
-          <a style={styles.text}>Куди ?</a>
-          <PlaceIcon style={styles.smallIcon} />
-          <div style={styles.vericalLine} />
-        </Col>
-
-        <Col style={styles.searchParamDiv}>
-          <a style={styles.text}>Дата відправлення ?</a>
-          <CalenarIcon style={styles.smallIcon} />
-          <div style={styles.vericalLine} />
-        </Col>
-
-        <Col style={styles.searchParamDiv}>
-          <a style={styles.text}>Дата прибуття ?</a>
-          <CalenarIcon style={styles.smallIcon} />
-          <div style={styles.vericalLine} />
-        </Col>
-
-        <Col style={styles.searchParamDiv}>
-          <a style={styles.text}>Скільки ?</a>
-          <PeoplesIcon style={styles.smallIcon} />
-        </Col>
-        <Col lg="1" style={{ display: "table", margin: "auto" }}>
-          <Button
-            variant="success"
-            className="rounded-circle"
-            style={{
-              marginTop: "auto",
-              marginBottom: "auto",
-              padding: 0,
-            }}
-          >
-            <SearchIcon style={styles.bigIcon} />
-          </Button>
-        </Col> */}
       </Row>
     </Container>
   );
