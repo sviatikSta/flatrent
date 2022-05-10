@@ -2,19 +2,21 @@ export default {
   searchLine: {
     marginTop: "75px",
     display: "flex",
-    width: "850px",
     height: "75px",
+    borderRadius: "50px",
+    border: "3px solid rgba(0, 0, 0, 0.5)",
+  },
+  searchLinePhone: {
+    marginTop: "75px",
     borderRadius: "50px",
     border: "3px solid rgba(0, 0, 0, 0.5)",
   },
   searchParamDiv: {
     cursor: "pointer",
-    justifySelf: "center",
     margin: "auto",
     display: "table",
   },
   vericalLine: {
-    with: "1px",
     height: "75%",
     border: "1px solid rgba(0, 0, 0, 1)",
     marginTop: "auto",
@@ -22,7 +24,7 @@ export default {
   },
   text: {
     color: "rgba(0, 0, 0, 0.75)",
-    fontSize: "20px",
+    fontSize: "22px",
     bold: "true",
   },
   bigIcon: {
