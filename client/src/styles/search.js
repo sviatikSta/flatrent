@@ -1,8 +1,6 @@
 export default {
   searchLine: {
     marginTop: "75px",
-    display: "flex",
-    height: "75px",
     borderRadius: "50px",
     border: "3px solid rgba(0, 0, 0, 0.5)",
   },
@@ -13,8 +11,6 @@ export default {
   },
   searchParamDiv: {
     cursor: "pointer",
-    margin: "auto",
-    display: "table",
   },
   vericalLine: {
     height: "75%",
@@ -23,9 +19,14 @@ export default {
     marginBottom: "auto",
   },
   text: {
-    color: "rgba(0, 0, 0, 0.75)",
-    fontSize: "22px",
+    color: "rgba(0, 0, 0, 1)",
+    fontSize: "25px",
+    height: "50px",
     bold: "true",
+    width: "100%",
+    borderRadius: "25PX",
+    // border: "1px solid rgba(0, 0, 0, 0.09)",
+    padding: "0px",
   },
   bigIcon: {
     fontSize: "50px",

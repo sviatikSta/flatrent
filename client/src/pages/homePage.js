@@ -68,42 +68,49 @@ export const HomePage = () => {
           </Carousel>
         </Col>
       </Row>
-      <Container
-        className="mx-auto fs-4 my-4"
-      >
+      <Container className="mx-auto fs-4 my-4">
         Найпопулярніші приклади готелів, хостелів чи хатинок
       </Container>
       <Row xs={1} md={3} className="g-4">
         <Col>
           <Card>
-            <Card.Img variant="top" src="https://24tv.ua/resources/photos/news/202107/1685585.jpg?v=1637318430000&w=1200&h=675&fit=cover" />
+            <Card.Img
+              variant="top"
+              src="https://24tv.ua/resources/photos/news/202107/1685585.jpg?v=1637318430000&w=1200&h=675&fit=cover"
+            />
             <Card.Body>
               <Card.Title>Одеса</Card.Title>
               <Button variant="success" style={styles.buttonInsideAd}>
-                  Переглянути
-                </Button>
+                Переглянути
+              </Button>
             </Card.Body>
           </Card>
         </Col>
         <Col>
           <Card>
-            <Card.Img variant="top" src="https://kirillovka.ks.ua/wp-content/uploads/2018/11/odessa-25-evgeniy-danshin.jpg" />
+            <Card.Img
+              variant="top"
+              src="https://kirillovka.ks.ua/wp-content/uploads/2018/11/odessa-25-evgeniy-danshin.jpg"
+            />
             <Card.Body>
-            <Card.Title>Київ</Card.Title>
+              <Card.Title>Київ</Card.Title>
               <Button variant="success" style={styles.buttonInsideAd}>
-                  Переглянути
-                </Button>
+                Переглянути
+              </Button>
             </Card.Body>
           </Card>
         </Col>
         <Col>
           <Card>
-            <Card.Img variant="top" src="https://bees.aero/storage/2111/4ZOhJ1xSXvpULQZkJBRWK72zgLyJuW1q2OKmBxnJ.jpeg" />
+            <Card.Img
+              variant="top"
+              src="https://bees.aero/storage/2111/4ZOhJ1xSXvpULQZkJBRWK72zgLyJuW1q2OKmBxnJ.jpeg"
+            />
             <Card.Body>
-            <Card.Title>Львів</Card.Title>
+              <Card.Title>Львів</Card.Title>
               <Button variant="success" style={styles.buttonInsideAd}>
-                  Переглянути
-                </Button>
+                Переглянути
+              </Button>
             </Card.Body>
           </Card>
         </Col>
