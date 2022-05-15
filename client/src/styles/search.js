@@ -21,7 +21,6 @@ export default {
   text: {
     color: "rgba(0, 0, 0, 1)",
     fontSize: "25px",
-    height: "50px",
     bold: "true",
     width: "100%",
     borderRadius: "25PX",
