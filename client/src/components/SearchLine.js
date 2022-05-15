@@ -5,9 +5,7 @@ import {
   Row,
   Col,
   Button,
-  NavDropdown,
   Dropdown,
-  ButtonGroup,
   FormControl,
 } from "react-bootstrap";
 import SearchIcon from "@mui/icons-material/SearchOutlined";
@@ -16,6 +14,9 @@ import CalenarIcon from "@mui/icons-material/CalendarMonthOutlined";
 import PeoplesIcon from "@mui/icons-material/PeopleOutlineOutlined";
 import { useLayoutEffect } from "react";
 import { useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { QuantityPicker } from "react-qty-picker";
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   <Button
@@ -27,11 +28,11 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     }}
     variant="outline-light"
   >
-    Куди? <PlaceIcon style={styles.smallIcon} />
+    {children}
   </Button>
 ));
 
-const CustomMenu = React.forwardRef(
+const CustomDropList = React.forwardRef(
   ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
     const [value, setValue] = React.useState("");
 
@@ -60,23 +61,25 @@ const CustomMenu = React.forwardRef(
   }
 );
 
+const CustomCalendar = React.forwardRef(
+  ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
+    const [value, setValue] = React.useState("");
+
+    return (
+      <div
+        ref={ref}
+        style={style}
+        className={className}
+        aria-labelledby={labeledBy}
+      >
+        {children}
+      </div>
+    );
+  }
+);
+
 export const SearchLine = () => {
-  // const [phone, setPhone] = useState(
-  //   window.matchMedia("(max-width: 768px)").matches
-  // );
-  // var mql = window.matchMedia("(max-width: 768px)");
-
-  // mql.onchange = (e) => {
-  //   if (e.matches) {
-  //     setPhone(true);
-  //   } else {
-  //     setPhone(false);
-  //   }
-  // };
-
-  // useLayoutEffect(() => {
-  //   console.log(window.matchMedia("(max-width: 768px)").matches);
-  // });
+  const [date, setDate] = useState(new Date());
 
   return (
     <Container>
@@ -91,8 +94,10 @@ export const SearchLine = () => {
               }}
             >
               <Dropdown>
-                <Dropdown.Toggle as={CustomToggle}></Dropdown.Toggle>
-                <Dropdown.Menu as={CustomMenu}>
+                <Dropdown.Toggle as={CustomToggle}>
+                  Куди? <PlaceIcon style={styles.smallIcon} />
+                </Dropdown.Toggle>
+                <Dropdown.Menu as={CustomDropList}>
                   <Dropdown.Item eventKey="1">baz</Dropdown.Item>
                   <Dropdown.Item eventKey="2">foo</Dropdown.Item>
                   <Dropdown.Item eventKey="3">bar</Dropdown.Item>
@@ -106,10 +111,14 @@ export const SearchLine = () => {
                 padding: "0 0",
               }}
             >
-              <Button variant="outline-light" style={styles.text}>
-                Дата відправлення ?
-                <CalenarIcon style={styles.smallIcon} />
-              </Button>
+              <Dropdown>
+                <Dropdown.Toggle as={CustomToggle}>
+                  Дата прибуття? <CalenarIcon style={styles.smallIcon} />
+                </Dropdown.Toggle>
+                <Dropdown.Menu as={CustomCalendar}>
+                  <Calendar minDate={new Date()} selectRange={true} />
+                </Dropdown.Menu>
+              </Dropdown>
             </Col>
             <Col
               lg="3"
@@ -118,10 +127,14 @@ export const SearchLine = () => {
                 padding: "0 0",
               }}
             >
-              <Button variant="outline-light" style={styles.text}>
-                Дата прибуття ?
-                <CalenarIcon style={styles.smallIcon} />
-              </Button>
+              <Dropdown>
+                <Dropdown.Toggle as={CustomToggle}>
+                  Дата вибуття? <CalenarIcon style={styles.smallIcon} />
+                </Dropdown.Toggle>
+                <Dropdown.Menu as={CustomCalendar}>
+                  <Calendar minDate={new Date()} selectRange={true} />
+                </Dropdown.Menu>
+              </Dropdown>
             </Col>
             <Col
               lg="2"
@@ -130,10 +143,15 @@ export const SearchLine = () => {
                 padding: "0 0",
               }}
             >
-              <Button variant="outline-light" style={styles.text}>
-                Скільки ?
-                <PeoplesIcon style={styles.smallIcon} />
-              </Button>
+              <Dropdown>
+                <Dropdown.Toggle as={CustomToggle}>
+                  Скільки ?
+                  <PeoplesIcon style={styles.smallIcon} />
+                </Dropdown.Toggle>
+                <Dropdown.Menu as={CustomCalendar}>
+                  <QuantityPicker min={1} value={1} max={10} />
+                </Dropdown.Menu>
+              </Dropdown>
             </Col>{" "}
             <Col
               lg="1"
