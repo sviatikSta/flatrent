@@ -1,25 +1,27 @@
-const express = require("express");
-const config = require("config");
-const mongoose = require("mongoose");
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const { routes } = require('./src/routes');
+
+mongoose.connect('mongodb+srv://gigaChad:mamatato123@cluster0.oeguv.mongodb.net/?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const app = express();
 
-app.use("api/register", require("./routes/register.routes"));
-app.use("api/auth", require("./routes/auth.routes"));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-const PORT = config.get("port") || 5000;
+routes.forEach((item) => {
+  console.log(item)
+  app.use(`/api/${item}`, require(`./src/routes/${item}`));
+});
 
-async function start() {
-  try {
-    await mongoose.connect(config.get("mongoUri"), {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    app.listen(PORT, () => console.log("app has been started on port " + PORT));
-  } catch (e) {
-    console.log("Server error : ", e.message);
-    process.exit(1);
-  }
-}
+const PORT = 3000
+app.listen(PORT);
 
-start();
+
+console.log(`Server running at ${PORT}`);
