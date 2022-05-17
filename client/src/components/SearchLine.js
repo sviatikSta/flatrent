@@ -18,6 +18,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { QuantityPicker } from "react-qty-picker";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 var dateToButtonBlocked = true;
 
@@ -85,8 +86,9 @@ const CustomCalendar = React.forwardRef(
 export const SearchLine = () => {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
-  const [where, setWhere] = useState("Куди?");
+  const [where, setWhere] = useState();
   const [quantity, setQuantity] = useState();
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -102,7 +104,8 @@ export const SearchLine = () => {
             >
               <Dropdown>
                 <Dropdown.Toggle as={CustomToggle}>
-                  {where} <PlaceIcon style={styles.smallIcon} />
+                  {where === undefined ? "Куди?" : where}
+                  <PlaceIcon style={styles.smallIcon} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomDropList}>
                   <Dropdown.Item
@@ -162,7 +165,7 @@ export const SearchLine = () => {
                 <Dropdown.Toggle as={CustomToggle}>
                   {dateTo === undefined
                     ? "Дата вибуття?"
-                    : moment(dateFrom).format("DD.MM.YYYY")}
+                    : moment(dateTo).format("DD.MM.YYYY")}
                   <CalenarIcon style={styles.smallIcon} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomCalendar}>
@@ -210,7 +213,18 @@ export const SearchLine = () => {
               <Button
                 variant="success"
                 className="rounded-circle"
-                onClick={() => console.log(quantity)}
+                onClick={() =>
+                  navigate(
+                    "/hotels/" +
+                      where +
+                      "_" +
+                      moment(dateFrom).format("DD.MM.YYYY") +
+                      "_" +
+                      moment(dateTo).format("DD.MM.YYYY") +
+                      "_" +
+                      quantity
+                  )
+                }
                 style={{
                   padding: 0,
                 }}
