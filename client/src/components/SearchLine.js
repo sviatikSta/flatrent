@@ -17,6 +17,9 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { QuantityPicker } from "react-qty-picker";
+import moment from "moment";
+
+var dateToButtonBlocked = true;
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   <Button
@@ -27,6 +30,7 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       onClick(e);
     }}
     variant="outline-light"
+    disabled={children[0] === "Дата вибуття?" && dateToButtonBlocked}
   >
     {children}
   </Button>
@@ -53,7 +57,9 @@ const CustomDropList = React.forwardRef(
         <ul className="list-unstyled">
           {React.Children.toArray(children).filter(
             (child) =>
-              !value || child.props.children.toLowerCase().startsWith(value)
+              !value ||
+              child.props.children.startsWith(value) ||
+              child.props.children.toLowerCase().startsWith(value)
           )}
         </ul>
       </div>
@@ -63,8 +69,6 @@ const CustomDropList = React.forwardRef(
 
 const CustomCalendar = React.forwardRef(
   ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
-    const [value, setValue] = React.useState("");
-
     return (
       <div
         ref={ref}
@@ -79,7 +83,10 @@ const CustomCalendar = React.forwardRef(
 );
 
 export const SearchLine = () => {
-  const [date, setDate] = useState(new Date());
+  const [dateFrom, setDateFrom] = useState();
+  const [dateTo, setDateTo] = useState();
+  const [where, setWhere] = useState("Куди?");
+  const [quantity, setQuantity] = useState();
 
   return (
     <Container>
@@ -95,12 +102,27 @@ export const SearchLine = () => {
             >
               <Dropdown>
                 <Dropdown.Toggle as={CustomToggle}>
-                  Куди? <PlaceIcon style={styles.smallIcon} />
+                  {where} <PlaceIcon style={styles.smallIcon} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomDropList}>
-                  <Dropdown.Item eventKey="1">baz</Dropdown.Item>
-                  <Dropdown.Item eventKey="2">foo</Dropdown.Item>
-                  <Dropdown.Item eventKey="3">bar</Dropdown.Item>
+                  <Dropdown.Item
+                    eventKey="1"
+                    onClick={(e) => setWhere(e.target.text)}
+                  >
+                    Київ
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    eventKey="2"
+                    onClick={(e) => setWhere(e.target.text)}
+                  >
+                    Одеса
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    eventKey="3"
+                    onClick={(e) => setWhere(e.target.text)}
+                  >
+                    Львів
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Col>
@@ -113,10 +135,19 @@ export const SearchLine = () => {
             >
               <Dropdown>
                 <Dropdown.Toggle as={CustomToggle}>
-                  Дата прибуття? <CalenarIcon style={styles.smallIcon} />
+                  {dateFrom === undefined
+                    ? "Дата прибуття?"
+                    : moment(dateFrom).format("DD.MM.YYYY")}
+                  <CalenarIcon style={styles.smallIcon} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomCalendar}>
-                  <Calendar minDate={new Date()} selectRange={true} />
+                  <Calendar
+                    minDate={new Date()}
+                    onClickDay={(e) => {
+                      setDateFrom(e);
+                      dateToButtonBlocked = false;
+                    }}
+                  />
                 </Dropdown.Menu>
               </Dropdown>
             </Col>
@@ -129,10 +160,20 @@ export const SearchLine = () => {
             >
               <Dropdown>
                 <Dropdown.Toggle as={CustomToggle}>
-                  Дата вибуття? <CalenarIcon style={styles.smallIcon} />
+                  {dateTo === undefined
+                    ? "Дата вибуття?"
+                    : moment(dateFrom).format("DD.MM.YYYY")}
+                  <CalenarIcon style={styles.smallIcon} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomCalendar}>
-                  <Calendar minDate={new Date()} selectRange={true} />
+                  <Calendar
+                    minDate={
+                      dateFrom === "Дата прибуття?"
+                        ? new Date()
+                        : new Date(moment(dateFrom).toString())
+                    }
+                    onClickDay={(e) => setDateTo(e)}
+                  />
                 </Dropdown.Menu>
               </Dropdown>
             </Col>
@@ -145,11 +186,16 @@ export const SearchLine = () => {
             >
               <Dropdown>
                 <Dropdown.Toggle as={CustomToggle}>
-                  Скільки ?
+                  {quantity === undefined ? "Скільки?" : quantity}
                   <PeoplesIcon style={styles.smallIcon} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomCalendar}>
-                  <QuantityPicker min={1} value={1} max={10} />
+                  <QuantityPicker
+                    min={1}
+                    value={1}
+                    max={10}
+                    onChange={(e) => setQuantity(e)}
+                  />
                 </Dropdown.Menu>
               </Dropdown>
             </Col>{" "}
@@ -164,6 +210,7 @@ export const SearchLine = () => {
               <Button
                 variant="success"
                 className="rounded-circle"
+                onClick={() => console.log(quantity)}
                 style={{
                   padding: 0,
                 }}
