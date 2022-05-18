@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import styles from "../styles/search";
 import {
   Container,
@@ -12,13 +12,12 @@ import SearchIcon from "@mui/icons-material/SearchOutlined";
 import PlaceIcon from "@mui/icons-material/PlaceOutlined";
 import CalenarIcon from "@mui/icons-material/CalendarMonthOutlined";
 import PeoplesIcon from "@mui/icons-material/PeopleOutlineOutlined";
-import { useLayoutEffect } from "react";
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { QuantityPicker } from "react-qty-picker";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 var dateToButtonBlocked = true;
 
@@ -89,6 +88,18 @@ export const SearchLine = () => {
   const [where, setWhere] = useState();
   const [quantity, setQuantity] = useState();
   const navigate = useNavigate();
+  const seachId = useParams().id;
+
+  useLayoutEffect(() => {
+    if (seachId !== undefined) {
+      let info = seachId.split("_");
+      setWhere(info[0]);
+      setDateFrom(new Date(moment(info[1], "DD.MM.YYYY")));
+      setDateTo(new Date(moment(info[2], "DD.MM.YYYY")));
+      dateToButtonBlocked = false;
+      setQuantity(info[3]);
+    }
+  }, []);
 
   return (
     <Container>
