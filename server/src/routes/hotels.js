@@ -3,7 +3,7 @@ const router = express.Router();
 const authConfig = require("../middlewares/auth");
 const { auth } = require("../controllers");
 
-router.post("/allHotels", hotels.getAll);
-router.post("/search", hotels.get);
+router.post("/getAllHotels", hotels.getAllHotels);
+router.post("/search", hotels.searchHotel);
 
 module.exports = router;
