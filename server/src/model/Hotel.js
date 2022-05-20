@@ -4,16 +4,22 @@ const jwt = require("jsonwebtoken");
 const userSchema = mongoose.Schema({
   name: {
     type: String,
+    required: true
   },
   photo: {
     type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
   },
   description: {
     type: String,
   },
   rooms: [
     { 
-        type: Schema.Types.ObjectId, 
+        type: mongoose.Types.ObjectId, 
         ref: 'Room' 
     },
   ]

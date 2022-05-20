@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const authConfig = require("../middlewares/auth");
-const { auth } = require("../controllers");
+const { hotels } = require("../controllers");
 
-router.post("/getAllHotels", hotels.getAllHotels);
-router.post("/search", hotels.searchHotel);
+router.get("/getAllHotels", hotels.getAllHotels);
+router.get("/search", hotels.searchHotel);
+router.get("/create", hotels.createNewHotel);
 
 module.exports = router;
