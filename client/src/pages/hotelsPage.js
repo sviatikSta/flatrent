@@ -1,12 +1,12 @@
 import { style } from "@mui/system";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { SearchLine } from "../components/SearchLine";
 import styles from "../styles/hotels";
 import StarIcon from "@mui/icons-material/Star";
 import { useEffect, useLayoutEffect, useCallback, useState } from "react";
 
 export const HotelsPage = () => {
-  const [hotels, setHotels] = useState();
+  const [hotels, setHotels] = useState("");
 
   useEffect(() => {
     fetch("api/hotels/getAllHotels")
@@ -15,6 +15,16 @@ export const HotelsPage = () => {
         setHotels(result);
       });
   }, []);
+
+  if (!hotels.length) {
+    return (
+      <Container>
+        <Row className="justify-content-md-center">
+          <Spinner animation="border" style={{ height: 100, width: 100 }} />
+        </Row>
+      </Container>
+    );
+  }
 
   return (
     <Container>
@@ -26,47 +36,51 @@ export const HotelsPage = () => {
         Київ: Один результат пошуку
         <hr />
       </Container>
-      <Container>
-        <Row>
-          <Col xl="5" xxl="4">
-            <img
-              src="https://www.aroell.com/wp-content/uploads/2017/12/wallpapers-3d-hotel-design-hd-wallpaper-artistic-hd-wallpapers.jpg"
-              width="400"
-              height="250"
-              style={styles.hotelPhoto}
-            ></img>
-          </Col>
-          <Col xl="7" xxl="8" style={styles.hotelInfo}>
-            <Col xl="2" style={{ color: "rgba(0, 0, 0, 0.5)" }}>
-              Київ
-            </Col>
-            <Col xl="5" style={{ fontWeight: "bold" }}>
-              П'яти зірковий готель в багатому стилі
-            </Col>
-            <Col>
-              <br />
-            </Col>
-            <Col xl="6" style={{ color: "rgba(0, 0, 0, 0.5)" }}>
-              Двохмісні та трьохмісні номери Wifi, Кухня та Опалення
-            </Col>
-            <Col className="mb-xxl-5">
-              <br />
-              <br />
-            </Col>
+      {hotels.map((hotel, index) => {
+        return (
+          <Container>
             <Row>
-              <Col xl="9" xs="9">
-                <StarIcon style={{ color: "yellow", marginRight: "5px" }} />
-                <a>5.0(відгуки)</a>
+              <Col xl="5" xxl="4">
+                <img
+                  src={hotel.photo}
+                  width="400"
+                  height="250"
+                  style={styles.hotelPhoto}
+                ></img>
               </Col>
+              <Col xl="7" xxl="8" style={styles.hotelInfo}>
+                <Col xl="2" style={{ color: "rgba(0, 0, 0, 0.5)" }}>
+                  {hotel.city}
+                </Col>
+                <Col xl="5" style={{ fontWeight: "bold" }}>
+                  {hotel.name}
+                </Col>
+                <Col>
+                  <br />
+                </Col>
+                <Col xl="6" style={{ color: "rgba(0, 0, 0, 0.5)" }}>
+                  {hotel.description}
+                </Col>
+                <Col className="mb-xxl-5">
+                  <br />
+                  <br />
+                </Col>
+                <Row>
+                  <Col xl="9" xs="9">
+                    <StarIcon style={{ color: "yellow", marginRight: "5px" }} />
+                    <a>5.0(відгуки)</a>
+                  </Col>
 
-              <Col xl="3" xs="3">
-                <a>100грн/год</a>
+                  <Col xl="3" xs="3">
+                    <a>100грн/год</a>
+                  </Col>
+                </Row>
               </Col>
             </Row>
-          </Col>
-        </Row>
-      </Container>
-      <hr />
+            <hr />
+          </Container>
+        );
+      })}
     </Container>
   );
 };
