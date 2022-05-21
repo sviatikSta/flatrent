@@ -10,13 +10,28 @@ import "../App.css";
 export const HotelsPage = () => {
   const [hotels, setHotels] = useState("");
   const navigate = useNavigate();
+  const hotelCity = useParams().id;
 
   useEffect(() => {
-    fetch("api/hotels/getAllHotels")
-      .then((res) => res.json())
-      .then((result) => {
-        setHotels(result);
-      });
+    if (hotelCity) {
+      fetch("/api/hotels/searchByCity/" + hotelCity, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+        body: null,
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          setHotels(result);
+        });
+    } else {
+      fetch("api/hotels/getAllHotels")
+        .then((res) => res.json())
+        .then((result) => {
+          setHotels(result);
+        });
+    }
   }, []);
 
   if (!hotels.length) {

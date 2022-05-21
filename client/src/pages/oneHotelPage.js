@@ -1,17 +1,44 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { Container, Row, Col, NavLink } from "react-bootstrap";
+import { Container, Row, Col, NavLink, Spinner } from "react-bootstrap";
+import { useEffect, useState } from "react";
 
 export const OneHotelPage = () => {
-  const hotelId = useParams().id;
   const navigate = useNavigate();
+  const hotelId = useParams().id;
+  const [hotelInfo, setHotelInfo] = useState("");
+
+  useEffect(() => {
+    fetch("/api/hotels/searchByID/" + hotelId, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+      body: null,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setHotelInfo(result);
+      });
+  }, []);
+
+  if (!hotelInfo.length) {
+    return (
+      <Container>
+        <Row className="justify-content-md-center">
+          <Spinner
+            animation="border"
+            style={{ height: 100, width: 100, marginTop: 25 }}
+          />
+        </Row>
+      </Container>
+    );
+  }
 
   return (
     <Container>
       <Col xxl="10" className="mx-auto">
         <Row style={{ paddingLeft: 10 }}>
-          <a style={{ fontSize: 36, marginTop: 25 }}>
-            Крутий готель в японському стилі
-          </a>
+          <a style={{ fontSize: 36, marginTop: 25 }}>{hotelInfo[0].name}</a>
         </Row>
         <Row style={{ paddingLeft: 10 }}>
           <NavLink
@@ -22,25 +49,19 @@ export const OneHotelPage = () => {
             }}
             onClick={() => navigate("/hotels/" + "Київ")}
           >
-            Київ
+            {hotelInfo[0].city}
           </NavLink>
         </Row>
         <Row>
           <img
             className="mx-auto"
             style={{ borderRadius: 25, width: 1080 }}
-            src="https://cdn.wallpapersafari.com/36/30/IwygkQ.jpg"
+            src={hotelInfo[0].photo}
           />
         </Row>
         <Row style={{ paddingLeft: 10, paddingTop: 15 }}>
           <hr />
-          <a style={{ fontSize: 18 }}>
-            Багато болю дуже важливо. Або уникнення, а як вони не знають часів,
-            а внутрішня ненависть, а не часів і болю, чи всього всього, чи
-            навіть цього. Це не біль, це найменший біль, який ми можемо
-            отримати, щоб вибрати там, де немає болю, і коли ми вибираємо ці
-            речі, ми вболіваємо за це.
-          </a>
+          <a style={{ fontSize: 18 }}>{hotelInfo[0].description}</a>
         </Row>
       </Col>
     </Container>
