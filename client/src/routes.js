@@ -5,6 +5,7 @@ import { HostelsPage } from "./pages/hostelsPage";
 import { HotelsPage } from "./pages/hotelsPage";
 import { HousesPage } from "./pages/housesPage";
 import { AuthPage } from "./pages/authPage";
+import { OneHotelPage } from "./pages/oneHotelPage";
 
 export const useRoutes = (isAuthenticated) => {
   if (isAuthenticated) {
@@ -15,6 +16,7 @@ export const useRoutes = (isAuthenticated) => {
         <Route path="/hotels/:id" exact element={<HotelsPage />} />
         <Route path="/hostels/" exact element={<HostelsPage />} />
         <Route path="/houses/" exact element={<HousesPage />} />
+        <Route path="/hotel/:id" exact element={<OneHotelPage />} />
 
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>

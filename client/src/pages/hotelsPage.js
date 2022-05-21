@@ -4,9 +4,11 @@ import { SearchLine } from "../components/SearchLine";
 import styles from "../styles/hotels";
 import StarIcon from "@mui/icons-material/Star";
 import { useEffect, useLayoutEffect, useCallback, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const HotelsPage = () => {
   const [hotels, setHotels] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("api/hotels/getAllHotels")
@@ -38,7 +40,16 @@ export const HotelsPage = () => {
       </Container>
       {hotels.map((hotel, index) => {
         return (
-          <Container>
+          <Container
+            style={{
+              cursor: "pointer",
+              boxShadow: "3px 3px 3px 1px #9E9E9E",
+              marginBottom: 25,
+              paddingTop: 5,
+              paddingBottom: 5,
+            }}
+            onClick={() => navigate("/hotel/" + hotel._id)}
+          >
             <Row>
               <Col xl="5" xxl="4">
                 <img
@@ -77,7 +88,7 @@ export const HotelsPage = () => {
                 </Row>
               </Col>
             </Row>
-            <hr />
+            {/* <hr /> */}
           </Container>
         );
       })}
