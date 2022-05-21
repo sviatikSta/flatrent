@@ -7,6 +7,7 @@ import {
   Button,
   Dropdown,
   FormControl,
+  Spinner,
 } from "react-bootstrap";
 import SearchIcon from "@mui/icons-material/SearchOutlined";
 import PlaceIcon from "@mui/icons-material/PlaceOutlined";
@@ -82,7 +83,7 @@ const CustomCalendar = React.forwardRef(
   }
 );
 
-export const SearchLine = () => {
+export const SearchLine = (child) => {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
   const [where, setWhere] = useState();
@@ -90,16 +91,18 @@ export const SearchLine = () => {
   const navigate = useNavigate();
   const seachId = useParams().id;
 
-  useLayoutEffect(() => {
-    if (seachId !== undefined) {
-      let info = seachId.split("_");
-      setWhere(info[0]);
-      setDateFrom(new Date(moment(info[1], "DD.MM.YYYY")));
-      setDateTo(new Date(moment(info[2], "DD.MM.YYYY")));
-      dateToButtonBlocked = false;
-      setQuantity(info[3]);
-    }
-  }, []);
+  if (!child.children) {
+    return (
+      <Container>
+        <Row className="justify-content-md-center">
+          <Spinner
+            animation="border"
+            style={{ height: 100, width: 100, marginTop: 25 }}
+          />
+        </Row>
+      </Container>
+    );
+  }
 
   return (
     <Container>
@@ -119,24 +122,16 @@ export const SearchLine = () => {
                   <PlaceIcon style={styles.smallIcon} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomDropList}>
-                  <Dropdown.Item
-                    eventKey="1"
-                    onClick={(e) => setWhere(e.target.text)}
-                  >
-                    Київ
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    eventKey="2"
-                    onClick={(e) => setWhere(e.target.text)}
-                  >
-                    Одеса
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    eventKey="3"
-                    onClick={(e) => setWhere(e.target.text)}
-                  >
-                    Львів
-                  </Dropdown.Item>
+                  {child.children.map((city, index) => {
+                    return (
+                      <Dropdown.Item
+                        eventKey="1"
+                        onClick={(e) => setWhere(e.target.text)}
+                      >
+                        {city}
+                      </Dropdown.Item>
+                    );
+                  })}
                 </Dropdown.Menu>
               </Dropdown>
             </Col>
@@ -228,7 +223,11 @@ export const SearchLine = () => {
                 onClick={() => {
                   if (!where) navigate("/hotels");
                   else navigate("/hotels/" + where);
+                  window.location.reload(false);
                 }}
+                // onClick={() => {
+                //   console.log(child.children);
+                // }}
                 style={{
                   padding: 0,
                 }}

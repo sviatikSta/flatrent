@@ -11,8 +11,15 @@ export const HotelsPage = () => {
   const [hotels, setHotels] = useState("");
   const navigate = useNavigate();
   const hotelCity = useParams().id;
+  const [dataToChild, setDataToChild] = useState();
 
   useEffect(() => {
+    fetch("/api/hotels/getAllCities")
+      .then((res) => res.json())
+      .then((result) => {
+        setDataToChild(result);
+      });
+
     if (hotelCity) {
       fetch("/api/hotels/searchByCity/" + hotelCity, {
         method: "GET",
@@ -49,7 +56,7 @@ export const HotelsPage = () => {
 
   return (
     <Container>
-      <SearchLine />
+      <SearchLine>{dataToChild}</SearchLine>
       <Container
         className="mx auto"
         style={{ marginTop: "75px", fontSize: "28px", marginBottom: "25px" }}

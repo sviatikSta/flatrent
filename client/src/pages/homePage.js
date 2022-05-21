@@ -1,23 +1,22 @@
 import styles from "../styles/search";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Carousel,
-  Card,
-  CardGroup,
-} from "react-bootstrap";
+import { Container, Row, Col, Button, Carousel, Card } from "react-bootstrap";
 import { SearchLine } from "../components/SearchLine";
-import SearchIcon from "@mui/icons-material/SearchOutlined";
-import PlaceIcon from "@mui/icons-material/PlaceOutlined";
-import CalenarIcon from "@mui/icons-material/CalendarMonthOutlined";
-import PeoplesIcon from "@mui/icons-material/PeopleOutlineOutlined";
+import { useEffect, useState } from "react";
 
 export const HomePage = () => {
+  const [dataToChild, setDataToChild] = useState();
+
+  useEffect(() => {
+    fetch("api/hotels/getAllCities")
+      .then((res) => res.json())
+      .then((result) => {
+        setDataToChild(result);
+      });
+  }, []);
+
   return (
     <Container>
-      <SearchLine />
+      <SearchLine>{dataToChild}</SearchLine>
       <Row>
         <Col className="mx-auto my-5">
           <Carousel className="mx-auto w-100">
