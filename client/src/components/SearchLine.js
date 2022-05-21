@@ -225,18 +225,10 @@ export const SearchLine = () => {
               <Button
                 variant="success"
                 className="rounded-circle"
-                onClick={() =>
-                  navigate(
-                    "/hotels/" +
-                      where +
-                      "_" +
-                      moment(dateFrom).format("DD.MM.YYYY") +
-                      "_" +
-                      moment(dateTo).format("DD.MM.YYYY") +
-                      "_" +
-                      quantity
-                  )
-                }
+                onClick={() => {
+                  if (!where) navigate("/hotels");
+                  else navigate("/hotels/" + where);
+                }}
                 style={{
                   padding: 0,
                 }}

@@ -5,6 +5,7 @@ import styles from "../styles/hotels";
 import StarIcon from "@mui/icons-material/Star";
 import { useEffect, useLayoutEffect, useCallback, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "../App.css";
 
 export const HotelsPage = () => {
   const [hotels, setHotels] = useState("");
@@ -22,7 +23,10 @@ export const HotelsPage = () => {
     return (
       <Container>
         <Row className="justify-content-md-center">
-          <Spinner animation="border" style={{ height: 100, width: 100 }} />
+          <Spinner
+            animation="border"
+            style={{ height: 100, width: 100, marginTop: 25 }}
+          />
         </Row>
       </Container>
     );
@@ -47,7 +51,9 @@ export const HotelsPage = () => {
               marginBottom: 25,
               paddingTop: 5,
               paddingBottom: 5,
+              borderRadius: 25,
             }}
+            className="hover-zoom"
             onClick={() => navigate("/hotel/" + hotel._id)}
           >
             <Row>
