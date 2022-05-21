@@ -215,6 +215,7 @@ export const SearchLine = () => {
             </Col>{" "}
             <Col
               lg="1"
+              className="p-md-2"
               style={{
                 textAlign: "center",
                 marginTop: "auto",
