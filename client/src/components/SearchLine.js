@@ -223,7 +223,6 @@ export const SearchLine = (child) => {
                 onClick={() => {
                   if (!where) navigate("/hotels");
                   else navigate("/hotels/" + where);
-                  if (child.refresh) window.location.reload(false);
                 }}
                 style={{
                   padding: 0,

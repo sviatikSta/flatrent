@@ -41,7 +41,7 @@ export const HotelsPage = () => {
           setHotels(result);
         });
     }
-  }, []);
+  }, [hotelCity]);
 
   if (!hotels.length) {
     return (
@@ -58,9 +58,7 @@ export const HotelsPage = () => {
 
   return (
     <Container>
-      <SearchLine refresh={true} selectedCity={hotelCity}>
-        {dataToChild}
-      </SearchLine>
+      <SearchLine selectedCity={hotelCity}>{dataToChild}</SearchLine>
       <Container
         className="mx auto"
         style={{ marginTop: "75px", fontSize: "28px", marginBottom: "25px" }}
