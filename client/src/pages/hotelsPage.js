@@ -12,6 +12,7 @@ export const HotelsPage = () => {
   const navigate = useNavigate();
   const hotelCity = useParams().id;
   const [dataToChild, setDataToChild] = useState();
+  const [hotelsCount, setHotelsCount] = useState();
 
   useEffect(() => {
     fetch("/api/hotels/getAllCities")
@@ -31,6 +32,7 @@ export const HotelsPage = () => {
         .then((res) => res.json())
         .then((result) => {
           setHotels(result);
+          setHotelsCount(result.length);
         });
     } else {
       fetch("api/hotels/getAllHotels")
@@ -61,7 +63,7 @@ export const HotelsPage = () => {
         className="mx auto"
         style={{ marginTop: "75px", fontSize: "28px", marginBottom: "25px" }}
       >
-        Київ: Один результат пошуку
+        {hotelCity === undefined ? <h4>Всі готелі</h4> : <h4>{hotelCity}: {hotelsCount} результати(-ів) пошуку</h4>}
         <hr />
       </Container>
       {hotels.map((hotel, index) => {
@@ -69,13 +71,9 @@ export const HotelsPage = () => {
           <Container
             style={{
               cursor: "pointer",
-              boxShadow: "3px 3px 3px 1px #9E9E9E",
-              marginBottom: 25,
-              paddingTop: 5,
-              paddingBottom: 5,
               borderRadius: 25,
             }}
-            className="hover-zoom"
+            className="hover-zoom py-2 shadow p-3 mb-3 bg-white"
             onClick={() => navigate("/hotel/" + hotel._id)}
           >
             <Row>
@@ -85,6 +83,7 @@ export const HotelsPage = () => {
                   width="400"
                   height="250"
                   style={styles.hotelPhoto}
+                  className="mw-100 mh-80"
                 ></img>
               </Col>
               <Col xl="7" xxl="8" style={styles.hotelInfo}>
@@ -120,6 +119,8 @@ export const HotelsPage = () => {
           </Container>
         );
       })}
+      <br/>
+      <br/>    
     </Container>
   );
 };
