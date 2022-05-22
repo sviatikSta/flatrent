@@ -58,12 +58,20 @@ export const HotelsPage = () => {
 
   return (
     <Container>
-      <SearchLine>{dataToChild}</SearchLine>
+      <SearchLine refresh={true} selectedCity={hotelCity}>
+        {dataToChild}
+      </SearchLine>
       <Container
         className="mx auto"
         style={{ marginTop: "75px", fontSize: "28px", marginBottom: "25px" }}
       >
-        {hotelCity === undefined ? <h4>Всі готелі</h4> : <h4>{hotelCity}: {hotelsCount} результати(-ів) пошуку</h4>}
+        {hotelCity === undefined ? (
+          <h4>Всі готелі</h4>
+        ) : (
+          <h4>
+            {hotelCity}: {hotelsCount} результати(-ів) пошуку
+          </h4>
+        )}
         <hr />
       </Container>
       {hotels.map((hotel, index) => {
@@ -119,8 +127,8 @@ export const HotelsPage = () => {
           </Container>
         );
       })}
-      <br/>
-      <br/>    
+      <br />
+      <br />
     </Container>
   );
 };

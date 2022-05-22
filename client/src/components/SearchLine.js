@@ -86,7 +86,7 @@ const CustomCalendar = React.forwardRef(
 export const SearchLine = (child) => {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
-  const [where, setWhere] = useState();
+  const [where, setWhere] = useState(child.selectedCity);
   const [quantity, setQuantity] = useState();
   const navigate = useNavigate();
   const seachId = useParams().id;
@@ -223,11 +223,8 @@ export const SearchLine = (child) => {
                 onClick={() => {
                   if (!where) navigate("/hotels");
                   else navigate("/hotels/" + where);
-                  window.location.reload(false);
+                  if (child.refresh) window.location.reload(false);
                 }}
-                // onClick={() => {
-                //   console.log(child.children);
-                // }}
                 style={{
                   padding: 0,
                 }}

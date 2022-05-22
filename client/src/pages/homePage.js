@@ -16,7 +16,7 @@ export const HomePage = () => {
 
   return (
     <Container>
-      <SearchLine>{dataToChild}</SearchLine>
+      <SearchLine refresh={false}>{dataToChild}</SearchLine>
       <Row>
         <Col className="mx-auto my-5">
           <Carousel className="mx-auto w-100">

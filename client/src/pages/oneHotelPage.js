@@ -40,17 +40,19 @@ export const OneHotelPage = () => {
         <Row style={{ paddingLeft: 10 }}>
           <a style={{ fontSize: 36, marginTop: 25 }}>{hotelInfo[0].name}</a>
         </Row>
-        <Row style={{ paddingLeft: 10}}>
+        <Row style={{ paddingLeft: 10 }}>
           <NavLink
             style={{
-              textDecorationLine: "underline",
               fontSize: 20,
               color: "black",
             }}
             className="pt-0 pb-3 fs-5"
-            onClick={() => navigate("/hotels/" + "Київ")}
+            onClick={() => navigate("/hotels/" + hotelInfo[0].city)}
           >
-            Місто: {hotelInfo[0].city}
+            Місто:{" "}
+            <a style={{ textDecorationLine: "underline" }}>
+              {hotelInfo[0].city}{" "}
+            </a>
           </NavLink>
         </Row>
         <Row>
@@ -62,12 +64,14 @@ export const OneHotelPage = () => {
         </Row>
         <Row style={{ paddingLeft: 10, paddingTop: 15 }}>
           <hr />
-          <a style={{ fontSize: 18 }}>Додаткова інформація: </a>
+          <a style={{ fontSize: 18, fontWeight: "bold" }}>
+            Додаткова інформація:{" "}
+          </a>
           <a style={{ fontSize: 18 }}>{hotelInfo[0].description}</a>
         </Row>
       </Col>
-      <br/>
-      <br/>
+      <br />
+      <br />
     </Container>
   );
 };
