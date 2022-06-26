@@ -6,3 +6,10 @@
   border-radius: 25px 25px 25px 25px;
   overflow: hidden;
 }
+ul a:active {
+  background-color: #198754 !important;
+}
+.searchInput:focus {
+  border-color: #198754 !important;
+  box-shadow: 0 0 0 0.25rem rgba(10, 53, 33, 0.25) !important;
+}
