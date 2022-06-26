@@ -2,11 +2,12 @@ import styles from "../styles/search";
 import { Container, Row, Col, Button, Carousel, Card } from "react-bootstrap";
 import { SearchLine } from "../components/SearchLine";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/App.css";
-
 
 export const HomePage = () => {
   const [dataToChild, setDataToChild] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("api/hotels/getAllCities")
@@ -81,7 +82,13 @@ export const HomePage = () => {
             />
             <Card.Body>
               <Card.Title>Одеса</Card.Title>
-              <Button variant="success" style={styles.buttonInsideAd}>
+              <Button
+                variant="success"
+                style={styles.buttonInsideAd}
+                onClick={() => {
+                  navigate("/hotels/" + "Одеса");
+                }}
+              >
                 Переглянути
               </Button>
             </Card.Body>
@@ -95,7 +102,13 @@ export const HomePage = () => {
             />
             <Card.Body>
               <Card.Title>Київ</Card.Title>
-              <Button variant="success" style={styles.buttonInsideAd}>
+              <Button
+                variant="success"
+                style={styles.buttonInsideAd}
+                onClick={() => {
+                  navigate("/hotels/" + "Київ");
+                }}
+              >
                 Переглянути
               </Button>
             </Card.Body>
@@ -109,7 +122,13 @@ export const HomePage = () => {
             />
             <Card.Body>
               <Card.Title>Львів</Card.Title>
-              <Button variant="success" style={styles.buttonInsideAd}>
+              <Button
+                variant="success"
+                style={styles.buttonInsideAd}
+                onClick={() => {
+                  navigate("/hotels/" + "Львів");
+                }}
+              >
                 Переглянути
               </Button>
             </Card.Body>
