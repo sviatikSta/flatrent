@@ -2,6 +2,8 @@ import styles from "../styles/search";
 import { Container, Row, Col, Button, Carousel, Card } from "react-bootstrap";
 import { SearchLine } from "../components/SearchLine";
 import { useEffect, useState } from "react";
+import "../styles/App.css";
+
 
 export const HomePage = () => {
   const [dataToChild, setDataToChild] = useState();
@@ -19,7 +21,7 @@ export const HomePage = () => {
       <SearchLine>{dataToChild}</SearchLine>
       <Row>
         <Col className="mx-auto my-5">
-          <Carousel className="mx-auto w-100">
+          <Carousel className="mx-auto w-100 carousel">
             <Carousel.Item>
               <img
                 className="img-fluid border border-secondary border-3 rounded w-100"

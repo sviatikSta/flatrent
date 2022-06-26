@@ -5,7 +5,7 @@ import styles from "../styles/hotels";
 import StarIcon from "@mui/icons-material/Star";
 import { useEffect, useLayoutEffect, useCallback, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "../App.css";
+import "../styles/App.css";
 
 export const HotelsPage = () => {
   const [hotels, setHotels] = useState("");

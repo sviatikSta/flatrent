@@ -1,0 +1,8 @@
+.hover-zoom:hover {
+  transform: scale(1.009);
+}
+
+.carousel {
+  border-radius: 25px 25px 25px 25px;
+  overflow: hidden;
+}
