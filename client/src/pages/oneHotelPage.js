@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { Container, Row, Col, NavLink, Spinner } from "react-bootstrap";
+import { Container, Row, Col, NavLink, Spinner, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
 
 export const OneHotelPage = () => {
   const navigate = useNavigate();
@@ -62,12 +63,49 @@ export const OneHotelPage = () => {
             src={hotelInfo[0].photo}
           />
         </Row>
-        <Row style={{ paddingLeft: 10, paddingTop: 15 }}>
-          <hr />
-          <a style={{ fontSize: 18, fontWeight: "bold" }}>
-            Додаткова інформація:{" "}
-          </a>
-          <a style={{ fontSize: 18 }}>{hotelInfo[0].description}</a>
+        <br />
+        <Row style={{ paddingLeft: 10 }}>
+          <Col xl="9">
+            <a style={{ fontSize: 18, fontWeight: "bold" }}>
+              Додаткова інформація:{" "}
+            </a>
+            <br />
+            <a style={{ fontSize: 18 }}>{hotelInfo[0].description}</a>
+          </Col>
+          <Col col="3">
+            <div
+              style={{
+                border: "1px solid rgba(0, 0, 0, 0.5)",
+                borderRadius: "20px",
+                display: "block",
+                textAlign: "center",
+                paddingTop: 15,
+                paddingBottom: 15,
+                boxShadow: "3px 3px 3px #9E9E9E",
+              }}
+            >
+              <Button
+                style={{
+                  color: "rgba(0, 0, 0, 1)",
+                  fontSize: "25px",
+                  bold: "true",
+                  width: "50%",
+                  borderRadius: "50px",
+                  border: "1px solid rgba(0, 0, 0, 0.25)",
+                  // height: "65px",
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+                variant="outline"
+              >
+                <BookmarkBorderOutlinedIcon
+                  style={{ fontSize: 36, color: "black" }}
+                />
+              </Button>
+              <br />
+              <a style={{ fontSize: 24 }}>100 грн/ніч</a>
+            </div>
+          </Col>
         </Row>
       </Col>
       <br />

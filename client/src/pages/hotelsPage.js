@@ -116,7 +116,7 @@ export const HotelsPage = () => {
                   </Col>
 
                   <Col xl="3" xs="3">
-                    <a>100грн/год</a>
+                    <a style={{ fontWeight: "bold" }}>100грн/ніч</a>
                   </Col>
                 </Row>
               </Col>
