@@ -50,7 +50,7 @@ const CustomDropList = React.forwardRef(
       >
         <FormControl
           autoFocus
-          className="searchInput mx-3 my-2 w-auto"
+          className="greenShadow mx-3 my-2 w-auto"
           placeholder="search"
           onChange={(e) => setValue(e.target.value)}
           value={value}

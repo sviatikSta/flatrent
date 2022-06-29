@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, NavLink, Spinner, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
+import "../styles/App.css";
 
 export const OneHotelPage = () => {
   const navigate = useNavigate();
@@ -97,6 +98,7 @@ export const OneHotelPage = () => {
                   paddingBottom: "5px",
                 }}
                 variant="outline"
+                className="greenShadow"
               >
                 <BookmarkBorderOutlinedIcon
                   style={{ fontSize: 36, color: "black" }}
