@@ -15,6 +15,7 @@ export const ModalCentered = (props) => {
       <Modal.Body
         style={{
           margin: -18,
+          padding: 0,
         }}
       >
         <Row
