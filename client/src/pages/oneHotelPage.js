@@ -67,6 +67,7 @@ export const OneHotelPage = () => {
         <br />
         <Row style={{ paddingLeft: 10 }}>
           <Col xl="9">
+            <hr />
             <a style={{ fontSize: 18, fontWeight: "bold" }}>
               Додаткова інформація:{" "}
             </a>

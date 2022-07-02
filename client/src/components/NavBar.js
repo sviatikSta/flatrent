@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-export const NavBar = () => {
+export const NavBar = ({ setModalShow }) => {
   const navigate = useNavigate();
 
   return (
@@ -60,6 +60,7 @@ export const NavBar = () => {
               paddingTop: "2px",
               paddingBottom: "2px",
             }}
+            onClick={() => setModalShow(true)}
           >
             <DensityMediumIcon
               style={{
